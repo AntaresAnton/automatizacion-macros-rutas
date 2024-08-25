@@ -1,0 +1,46 @@
+secciónes
+index = una vista simple, un listado con informes, etc
+agregar-proceso = esta vista tiene un formulario con 3 items (POST)
+    Nombre del proceso
+    Descripción del proceso
+    Orden del proceso
+    un checkbox indicando si el proceso estará activo o deshabilitado
+
+añadir nuevo informe = dispone de un combobox (donde aparecen todos los informe que están disponibles) y checkbox condicionales donde están los siguientes items (POST):
+    Workflow
+    Macro
+    Copiado
+    envío de correo
+    checkbox indicando si el informe es secuenciales (dado que todos los informe deben ser secuenciales)
+
+editar informe: esta página debe mostrar el listado de todos los informe, y la opción de poder editarlos. dispone de un recuadro simple, con un botón que activa un modal para poder editar el proceso. este modal contiene lo siguiente:
+    Nombre del proceso
+    descripción del proceso
+    Orden del proceso
+    checkbox que indique si el proceso está activo o no
+    2 botones (cerrar/cancelar y guardar cambios)
+
+editar informes: esta página es muy similar a "editar proceso" la estructura principal se asemeja (debe ser un listado con todos los informes). al presionar "editar" abre un modal. este modal a diferencia de "editar informe" debe contener lo siguiente:
+    combobox con el listado de informe disponibles
+    -workflow:
+        un checkbox que habilite/deshabilite incluir workflow
+        un campo que indique el nombre del workflow a editar
+    -macro
+        un checkbox que habilite/deshabilite la macro
+        un campo que indique la ruta de la macro
+    -copiado de archivos
+        un checkbox que habilite/deshabilite el botón de copiado de archivos
+        un campo que indique la ruta de copiado de archivos
+        un campo que indique la ruta de pegado de archivos
+    -envío de correos
+        un checkbox que habilite/deshabilite el botón de envío de correos
+        un campo que indique los correos electrónicos a los que será enviado (delimitado por comas)
+        mensaje de correo
+    un chackbox que indique si es secuencial la ejecución del informe, o no
+    2 botones (cerrar/cancelar y guardar cambios)
+
+ 
+        
+Eliminar informe: esta página es similar a editar informe, contiene un listado con todos los informe disponibles donde:
+    al presionar el botón eliminar, indica mediante una alerta la confirmación de eliminación del proceso. y al confirmar, lo elimina.
+

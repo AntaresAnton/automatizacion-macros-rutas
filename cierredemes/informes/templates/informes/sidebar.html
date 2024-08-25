@@ -1,0 +1,71 @@
+<!-- Sidebar -->
+<nav class="col-md-2 d-none d-md-block sidebar position-fixed top-0" style="background-color: #134d32;">
+    <div class="position-sticky pt-3">
+        <div class="text-center mb-3">
+            <a href="{% url 'index' %}">
+                <img src="https://via.placeholder.com/300x100" alt="Logo" class="img-fluid logo-white" style="max-width: 80%;">
+            </a>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active text-white" href="{% url 'index' %}">
+                    <i class="fas fa-home me-2"></i> Inicio
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" data-bs-toggle="collapse" href="#agregarAccordion" role="button" aria-expanded="false" aria-controls="agregarAccordion">
+                    <i class="fas fa-plus me-2"></i> Agregar
+                </a>
+                <div class="collapse" id="agregarAccordion">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'anadir_proceso' %}">Proceso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'anadir_informe' %}">Informe</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" data-bs-toggle="collapse" href="#configAccordion" role="button" aria-expanded="false" aria-controls="configAccordion">
+                    <i class="fas fa-save me-2"></i> Gestionar
+                </a>
+                <div class="collapse" id="configAccordion">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'gestionar_procesos' %}">Proceso</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'gestionar_informes' %}">Informe</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'logs' %}">
+                    <i class="fas fa-file-alt me-2"></i> Logs
+                </a>
+            </li>
+        </ul>
+
+        <hr class="bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Procesos</a>
+            </li>
+            {% for process in processes %}
+                {% if process.activo %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" data-process="{{ process.id }}">
+                            <i class="fas fa-tasks me-2"></i> {{ process.nombre }} ({{ process.orden }})
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        
+
+    </div>
+    
+</nav>

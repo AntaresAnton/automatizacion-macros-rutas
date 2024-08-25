@@ -1,0 +1,19 @@
+<main class="col-md-10 ms-sm-auto px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Añadir Nuevo Informe</h1>
+    </div>
+    <form id="addReportForm" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="processAssignment" class="form-label">Asignar a Proceso</label>
+            <select class="form-select" id="processAssignment" name="process" required>
+                <option value="">Seleccione un proceso</option>
+                {% for process in processes %}
+                    <option value="{{ process.id }}">{{ process.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- Include other form fields as in your reference HTML -->
+        <button type="submit" class="btn btn-primary">Añadir Informe</button>
+    </form>
+</main>

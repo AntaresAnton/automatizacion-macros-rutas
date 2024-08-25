@@ -1,0 +1,73 @@
+<div class="p-3">
+    <div class="text-center mb-3">
+        <a href="{% url 'index' %}">
+            <img src="https://via.placeholder.com/300x100" alt="Logo" class="img-fluid logo-white"
+                style="max-width: 80%;">
+        </a>
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active text-white" href="{% url 'index' %}">
+                <i class="fas fa-home me-2"></i> Inicio
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#agregarAccordion"
+                role="button" aria-expanded="false" aria-controls="agregarAccordion">
+                <i class="fas fa-plus me-2"></i> Agregar
+            </a>
+            <div class="collapse" id="agregarAccordion">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'anadir_proceso' %}">Proceso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'anadir_informe' %}">Informe</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#configAccordion"
+                role="button" aria-expanded="false" aria-controls="configAccordion">
+                <i class="fas fa-save me-2"></i> Gestionar
+            </a>
+            <div class="collapse" id="configAccordion">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'gestionar_proceso' %}">Proceso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{% url 'gestionar_informe' %}">Informe</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'log' %}">
+                <i class="fas fa-file-alt me-2"></i> Logs
+            </a>
+        </li>
+    </ul>
+    <hr class="bg-light">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#">Procesos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-tasks me-2"></i> 06
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#" data-process="07">
+                <i class="fas fa-tasks me-2"></i> Proceso 07 - CPCH
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#">
+                <i class="fas fa-tasks me-2"></i> 08
+            </a>
+        </li>
+    </ul>
+</div>

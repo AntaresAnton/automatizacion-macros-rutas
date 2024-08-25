@@ -1,0 +1,30 @@
+{% extends 'informes/base.html' %}
+
+{% block content %}
+<!-- <main class="col-md-10 ms-sm-auto px-md-4"> -->
+<main class="col-md-8 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Agregar Nuevo Proceso</h1>
+    </div>
+
+    <form id="addProcessForm">
+        <div class="mb-3">
+            <label for="processName" class="form-label">Nombre del Proceso</label>
+            <input type="text" class="form-control" id="processName" required>
+        </div>
+        <div class="mb-3">
+            <label for="processDescription" class="form-label">Descripción del Proceso</label>
+            <textarea class="form-control" id="processDescription" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="processOrder" class="form-label">Orden del Proceso</label>
+            <input type="number" class="form-control" id="processOrder" min="1" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="isActive" checked>
+            <label class="form-check-label" for="isActive">Proceso Activo</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Proceso</button>
+    </form>
+</main>
+{% endblock %}

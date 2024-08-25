@@ -1,0 +1,10 @@
+{% extends 'informes/base.html' %}
+{% block content %}
+<h2>Confirm Deletion</h2>
+<p>Are you sure you want to delete the process "{{ process.nombre }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+</form>
+<a href="{% url 'gestionar_procesos' %}">Cancel</a>
+{% endblock %}

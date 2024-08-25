@@ -1,0 +1,175 @@
+{% extends 'informes/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="col-md-10 ms-sm-auto px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Gestionar Informes</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre del Informe</th>
+                <th>Proceso Asignado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for informe in informes %}
+            <tr>
+                <td>{{ informe.nombre }}</td>
+                <td>{{ informe.proceso.nombre }}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editReportModal" onclick="loadReportData({{ informe.id }})">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteReport({{ informe.id }})">Eliminar</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal for editing report -->
+<div class="modal fade" id="editReportModal" tabindex="-1" aria-labelledby="editReportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editReportModalLabel">Editar Informe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editReportForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="processAssignment" class="form-label">Asignar a Proceso</label>
+                        <select class="form-select" id="processAssignment" required>
+                            <option value="">Seleccione un proceso</option>
+                            {% for proceso in procesos %}
+                                <option value="{{ proceso.id }}">{{ proceso.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="useWorkflow" onchange="toggleField('workflowField')" checked>
+                        <label class="form-check-label" for="useWorkflow">Incluir Workflow</label>
+                    </div>
+                    <div id="workflowField" class="mb-3">
+                        <label for="workflowName" class="form-label">Nombre del Workflow</label>
+                        <input type="text" class="form-control" id="workflowName">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="useMacro" onchange="toggleField('macroField')" checked>
+                        <label class="form-check-label" for="useMacro">Incluir Macro</label>
+                    </div>
+                    <div id="macroField" class="mb-3">
+                        <label for="macroPath" class="form-label">Ruta de la Macro</label>
+                        <input type="text" class="form-control" id="macroPath">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="useCopy" onchange="toggleField('copyField')" checked>
+                        <label class="form-check-label" for="useCopy">Incluir Copiado</label>
+                    </div>
+                    <div id="copyField" class="mb-3">
+                        <label for="sourcePath" class="form-label">Ruta de Origen para Copiado</label>
+                        <input type="text" class="form-control" id="sourcePath">
+                        <label for="destinationPath" class="form-label mt-2">Ruta de Destino para Copiado</label>
+                        <input type="text" class="form-control" id="destinationPath">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="useEmail" onchange="toggleField('emailField')" checked>
+                        <label class="form-check-label" for="useEmail">Incluir Envío de Correo</label>
+                    </div>
+                    <div id="emailField" class="mb-3">
+                        <label for="emailRecipients" class="form-label">Destinatarios de Correo</label>
+                        <input type="text" class="form-control" id="emailRecipients" placeholder="Separar correos con comas">
+                        <label for="emailMessage" class="form-label mt-2">Mensaje de Correo</label>
+                        <textarea class="form-control" id="emailMessage" rows="3"></textarea>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="isSequential" checked>
+                        <label class="form-check-label" for="isSequential">Secuencial</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="saveReportChanges()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+<script>
+    function loadReportData(id) {
+        fetch(`/get-informe/${id}/`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('processAssignment').value = data.proceso;
+                document.getElementById('workflowName').value = data.workflow;
+                document.getElementById('macroPath').value = data.macro;
+                document.getElementById('sourcePath').value = data.source_path;
+                document.getElementById('destinationPath').value = data.destination_path;
+                document.getElementById('emailRecipients').value = data.email_recipients;
+                document.getElementById('emailMessage').value = data.email_message;
+                document.getElementById('isSequential').checked = data.is_sequential;
+            });
+    }
+
+    function saveReportChanges() {
+        const formData = {
+            proceso: document.getElementById('processAssignment').value,
+            workflow: document.getElementById('workflowName').value,
+            macro: document.getElementById('macroPath').value,
+            source_path: document.getElementById('sourcePath').value,
+            destination_path: document.getElementById('destinationPath').value,
+            email_recipients: document.getElementById('emailRecipients').value,
+            email_message: document.getElementById('emailMessage').value,
+            is_sequential: document.getElementById('isSequential').checked,
+        };
+
+        fetch('/edit-informe/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                location.reload();
+            }
+        });
+    }
+
+    function deleteReport(id) {
+        if (confirm('¿Está seguro de que desea eliminar este informe?')) {
+            fetch(`/delete-informe/${id}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                }
+            });
+        }
+    }
+
+    function toggleField(fieldId) {
+        const field = document.getElementById(fieldId);
+        field.style.display = field.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+{% endblock %}

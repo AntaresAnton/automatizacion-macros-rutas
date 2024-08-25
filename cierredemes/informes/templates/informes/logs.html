@@ -1,0 +1,40 @@
+{% extends 'informes/base.html' %}
+
+{% block title %}Registro de Ejecuciones{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Registro de Ejecuciones</h1>
+</div>
+<button id="downloadLogs" class="btn btn-success mb-3">Descargar Logs</button>
+
+<div class="log-container">
+    {% for log in logs %}
+    <div class="log-entry">
+        <span class="log-timestamp">{{ log.timestamp }}</span>
+        <span class="log-process">{{ log.process }}</span>
+        <span class="log-action">{{ log.action }}</span>
+    </div>
+    {% endfor %}
+</div>
+
+<nav aria-label="Log navigation">
+    <ul class="pagination justify-content-center mt-4">
+        {% if logs.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ logs.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+        
+        {% for num in logs.paginator.page_range %}
+            {% if logs.number == num %}
+                <li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+        
+        {% if logs.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ logs.next_page_number }}">Siguiente</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

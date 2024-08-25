@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Informes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <!-- Mobile nav toggle button -->
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav"
+                aria-controls="mobileNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Mobile nav -->
+            <nav id="mobileNav" class="collapse d-md-none" style="background-color: #134d32;">
+                <div class="p-3">
+                    <div class="text-center mb-3">
+                        <a href="index.html">
+                            <img src="https://via.placeholder.com/300x100" alt="Logo" class="img-fluid logo-white"
+                                style="max-width: 80%;">
+                        </a>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="index.html">
+                                <i class="fas fa-home me-2"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="collapse" href="#agregarAccordionMobile"
+                                role="button" aria-expanded="false" aria-controls="agregarAccordionMobile">
+                                <i class="fas fa-plus me-2"></i> Agregar
+                            </a>
+                            <div class="collapse" id="agregarAccordionMobile">
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="anadir-proceso.html">Proceso</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="anadir-informe.html">Informe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="collapse" href="#configAccordionMobile"
+                                role="button" aria-expanded="false" aria-controls="configAccordionMobile">
+                                <i class="fas fa-save me-2"></i> Gestionar
+                            </a>
+                            <div class="collapse" id="configAccordionMobile">
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="gestionar-proceso.html">Proceso</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="gestionar-informe.html">Informe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="collapse" href="#deleteAccordionMobile"
+                                role="button" aria-expanded="false" aria-controls="deleteAccordionMobile">
+                                <i class="fas fa-minus me-2"></i> Eliminar
+                            </a>
+                            <div class="collapse" id="deleteAccordionMobile">
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="del-process.html">Proceso</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="del-inf.html">Informe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="log.html">
+                                <i class="fas fa-file-alt me-2"></i> Logs
+                            </a>
+                        </li>
+                    </ul>
+                    <hr class="bg-light">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Procesos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-tasks me-2"></i> 06
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-process="07">
+                                <i class="fas fa-tasks me-2"></i> Proceso 07 - CPCH
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Sidebar -->
+            <nav class="col-md-2 d-none d-md-block sidebar position-fixed top-0" style="background-color: #134d32;">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-3">
+                        <a href="index.html">
+                            <img src="https://via.placeholder.com/300x100" alt="Logo" class="img-fluid logo-white"
+                                style="max-width: 80%;">
+                        </a>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="index.html">
+                                <i class="fas fa-home me-2"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="collapse" href="#agregarAccordion"
+                                role="button" aria-expanded="false" aria-controls="agregarAccordion">
+                                <i class="fas fa-plus me-2"></i> Agregar
+                            </a>
+                            <div class="collapse" id="agregarAccordion">
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="anadir-proceso.html">Proceso</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="anadir-informe.html">Informe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" data-bs-toggle="collapse" href="#configAccordion"
+                                role="button" aria-expanded="false" aria-controls="configAccordion">
+                                <i class="fas fa-save me-2"></i> Gestionar
+                            </a>
+                            <div class="collapse" id="configAccordion">
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="gestionar-proceso.html">Proceso</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" href="gestionar-informe.html">Informe</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="log.html">
+                                <i class="fas fa-file-alt me-2"></i> Logs
+                            </a>
+                        </li>
+                    </ul>
+                    <hr class="bg-light">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Procesos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-tasks me-2"></i> 06
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#" data-process="07">
+                                <i class="fas fa-tasks me-2"></i> Proceso 07 - CPCH
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">
+                                <i class="fas fa-tasks me-2"></i> 08
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content -->
+            <main class="col-md-10 ms-sm-auto px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Gestionar Informes</h1>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Informe</th>
+                            <th>Proceso Asignado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Informe de Ventas CPCH</td>
+                            <td>Proceso 1 - CPCH</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editReportModal" onclick="loadReportData(1)">Editar</button>
+                                <button class="btn btn-danger btn-sm" onclick="deleteReport(1)">Eliminar</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows for other reports -->
+                    </tbody>
+                </table>
+            
+                <!-- Modal for editing report -->
+                <div class="modal fade" id="editReportModal" tabindex="-1" aria-labelledby="editReportModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editReportModalLabel">Editar Informe</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="editReportForm">
+                                    <div class="mb-3">
+                                        <label for="processAssignment" class="form-label">Asignar a Proceso</label>
+                                        <select class="form-select" id="processAssignment" required>
+                                            <option value="">Seleccione un proceso</option>
+                                            <option value="1" selected>Proceso 1 - CPCH</option>
+                                            <option value="2">Proceso 2 - PR</option>
+                                            <option value="3">Proceso 3 - Cobertura CPCH</option>
+                                            <option value="4">Proceso 4 - Cobertura CPCH Trimestral</option>
+                                            <option value="5">Proceso 5 - Aviso a Usuarios</option>
+                                            <option value="6">Proceso 6 - Efectividad CPCH</option>
+                                        </select>
+                                    </div>
+            
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="useWorkflow" onchange="toggleField('workflowField')" checked>
+                                        <label class="form-check-label" for="useWorkflow">Incluir Workflow</label>
+                                    </div>
+                                    <div id="workflowField" class="mb-3">
+                                        <label for="workflowName" class="form-label">Nombre del Workflow</label>
+                                        <input type="text" class="form-control" id="workflowName" value="WORKFLOW_02_RES_VENTA_DIARIA_MESCERRADO_PIS">
+                                    </div>
+            
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="useMacro" onchange="toggleField('macroField')" checked>
+                                        <label class="form-check-label" for="useMacro">Incluir Macro</label>
+                                    </div>
+                                    <div id="macroField" class="mb-3">
+                                        <label for="macroPath" class="form-label">Ruta de la Macro</label>
+                                        <input type="text" class="form-control" id="macroPath" value="E:\02_Modulos\bipisquera\Reporte_VentaDiaria_Excel\MESCERRADO\VENTA_DIARIA_CPCH_PR_ORCL_MESCERRADO.xlsm">
+                                    </div>
+            
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="useCopy" onchange="toggleField('copyField')" checked>
+                                        <label class="form-check-label" for="useCopy">Incluir Copiado</label>
+                                    </div>
+                                    <div id="copyField" class="mb-3">
+                                        <label for="sourcePath" class="form-label">Ruta de Origen para Copiado</label>
+                                        <input type="text" class="form-control" id="sourcePath" value="E:\01_Informes\CPCH\Venta_Diaria">
+                                        <label for="destinationPath" class="form-label mt-2">Ruta de Destino para Copiado</label>
+                                        <input type="text" class="form-control" id="destinationPath" value="\\servidor\carpeta_compartida\CPCH\Venta_Diaria">
+                                    </div>
+            
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="useEmail" onchange="toggleField('emailField')" checked>
+                                        <label class="form-check-label" for="useEmail">Incluir Envío de Correo</label>
+                                    </div>
+                                    <div id="emailField" class="mb-3">
+                                        <label for="emailRecipients" class="form-label">Destinatarios de Correo</label>
+                                        <input type="text" class="form-control" id="emailRecipients" value="usuario1@example.com, usuario2@example.com" placeholder="Separar correos con comas">
+                                        <label for="emailMessage" class="form-label mt-2">Mensaje de Correo</label>
+                                        <textarea class="form-control" id="emailMessage" rows="3">Estimados, se ha generado el informe de Venta Diaria CPCH. Por favor, revisar el archivo adjunto.</textarea>
+                                    </div>
+            
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="isSequential" checked>
+                                        <label class="form-check-label" for="isSequential">Secuencial</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-primary" onclick="saveReportChanges()">Guardar Cambios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+            
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="taskToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Dashboard</strong>
+                <small>Ahora</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Tarea completada exitosamente.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

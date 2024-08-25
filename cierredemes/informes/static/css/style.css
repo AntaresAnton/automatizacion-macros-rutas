@@ -1,0 +1,102 @@
+body {
+    background-color: #eaeaea;
+}
+
+.task-card {
+    transition: all 0.3s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+}
+
+.custom-width {
+    width: 32%;
+    margin-bottom: 5px;
+    font-size: 11px;
+}
+
+.sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.btn-primary {
+    background-color: #0a4e31 !important;
+    border-color: #0a4e31 !important;
+}
+
+.btn-primary:hover {
+    background-color: #1a7e51;
+    border-color: #1a7e51;
+}
+
+.btn-secondary {
+    background-color: #58ad30;
+    border-color: #58ad30;
+}
+
+.btn-secondary:hover {
+    background-color: #78cd50;
+    border-color: #78cd50;
+}
+
+.btn-success {
+    background-color: #5ab031;
+    border-color: #5ab031;
+}
+
+.btn-success:hover {
+    background-color: #7ad051;
+    border-color: #7ad051;
+}
+
+.btn-danger {
+    background-color: #af0a3b;
+    border-color: #af0a3b;
+}
+
+.btn-danger:hover {
+    background-color: #cf2a5b;
+    border-color: #cf2a5b;
+}
+
+.bg-light {
+    background-color: #e5e5e5 !important;
+}
+
+.text-white {
+    color: #f7f7f7 !important;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #3a6a5b;
+}
+
+.list-group-item-action:hover {
+    background-color: #e2ffe7;
+}
+/* para que el logo ccu se vea blanco */
+.logo-white {
+    filter: brightness(0) invert(1);
+  }
+  

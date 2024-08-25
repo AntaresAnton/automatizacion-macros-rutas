@@ -1,0 +1,85 @@
+{% extends 'informes/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="col-md-10 ms-sm-auto px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Añadir Nuevo Informe</h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="processAssignment" class="form-label">Asignar a Proceso</label>
+            <select class="form-select" id="processAssignment" name="proceso" required>
+                <option value="">Seleccione un proceso</option>
+                {% for proceso in procesos %}
+                    <option value="{{ proceso.id }}">{{ proceso.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div id="reportField" class="mb-3">
+            <label for="reportName" class="form-label">Nombre del Informe</label>
+            <input type="text" class="form-control" id="reportName" name="nombre" required>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="useWorkflow" name="use_workflow" onchange="toggleField('workflowField')">
+            <label class="form-check-label" for="useWorkflow">Incluir Workflow</label>
+        </div>
+        <div id="workflowField" class="mb-3" style="display:none;">
+            <label for="workflowName" class="form-label">Nombre del Workflow</label>
+            <input type="text" class="form-control" id="workflowName" name="workflow">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="useMacro" name="use_macro" onchange="toggleField('macroField')">
+            <label class="form-check-label" for="useMacro">Incluir Macro</label>
+        </div>
+        <div id="macroField" class="mb-3" style="display:none;">
+            <label for="macroPath" class="form-label">Ruta de la Macro</label>
+            <input type="text" class="form-control" id="macroPath" name="macro">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="useCopy" name="use_copy" onchange="toggleField('copyField')">
+            <label class="form-check-label" for="useCopy">Incluir Copiado</label>
+        </div>
+        <div id="copyField" class="mb-3" style="display:none;">
+            <label for="sourcePath" class="form-label">Ruta de Origen para Copiado</label>
+            <input type="text" class="form-control" id="sourcePath" name="source_path">
+            <label for="destinationPath" class="form-label mt-2">Ruta de Destino para Copiado</label>
+            <input type="text" class="form-control" id="destinationPath" name="destination_path">
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="useEmail" name="use_email" onchange="toggleField('emailField')">
+            <label class="form-check-label" for="useEmail">Incluir Envío de Correo</label>
+        </div>
+        <div id="emailField" class="mb-3" style="display:none;">
+            <label for="emailRecipients" class="form-label">Destinatarios de Correo</label>
+            <input type="text" class="form-control" id="emailRecipients" name="email_recipients" placeholder="Separar correos con comas">
+            <label for="emailMessage" class="form-label mt-2">Mensaje de Correo</label>
+            <textarea class="form-control" id="emailMessage" name="email_message" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="isSequential" name="is_sequential" checked>
+            <label class="form-check-label" for="isSequential">Secuencial</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Añadir Informe</button>
+    </form>
+</main>
+
+<script>
+    function toggleField(fieldId) {
+        const field = document.getElementById(fieldId);
+        field.style.display = field.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleFields() {
+        // Your existing toggleFields function
+    }
+</script>
+{% endblock %}
